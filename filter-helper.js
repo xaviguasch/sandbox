@@ -104,3 +104,40 @@ const filteredUsers = users.filter((user) => {
 // const filteredUsers = users.filter(user =>  user.admin)
 
 console.log(filteredUsers); // Returns an array with the users that have admin: true
+
+
+
+// 8. Challenging! Implementing 'reject'
+// This is a hard one! Create a function called 'reject'. Reject should work in the opposite way of
+// 'filter' -if a function returns 'true', the item should *not* be included in the new array. Hint: you can
+// reuse filter.
+//
+// For example:
+//
+const newNumbers = [10, 20, 30];
+const lessThanFifteen = reject(newNumbers, function(number) {
+    return number > 15
+}) // in lessThanFifteen we're storing the future call to reject
+
+// function reject(array, iteratorFunction) {
+    
+// }
+// console.log(lessThanFifteen());
+
+
+// SOLUTION
+function reject(array, iteratorFunction) {
+    return array.filter((num) => {
+        return !iteratorFunction(num)
+    })  
+}
+
+
+console.log(lessThanFifteen);
+
+// NOTES: This is the iteratorFunction: 
+//
+// function(number) {
+// return number > 15
+// })
+// It returns true is the passed number is bigger than 15
