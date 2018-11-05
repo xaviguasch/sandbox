@@ -46,6 +46,8 @@ const images = [
   
 let heights = []
 
+// SOLUTION
+
 heights = images.map((image) => {
     return image.height
 })

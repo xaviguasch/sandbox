@@ -45,7 +45,7 @@ console.log(sum);
 //     }
 // }
 
-// Solution
+// SOLUTION
 
 function handlePosts() {
     const posts = [
@@ -80,7 +80,7 @@ const images = [
 
 let areas = []
 
-// Solution
+// SOLUTION
 
 images.forEach((image) => {
     areas.push(image.height * image.width)
