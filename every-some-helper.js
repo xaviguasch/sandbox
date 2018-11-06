@@ -16,7 +16,7 @@ for (let i = 0; i < computers.length; i++) {
 
     if (computer.ram < 16) {
         allComputersCanRunProgram = false
-    } else {
+    } else if (computer.ram > 16) {
         atLeastOneComputerCanRunProgram = true
     }
 }
@@ -29,4 +29,50 @@ let doesEveryComputer = computers.every((computer) => {
     return computer.ram > 16
 })
 
-console.log(doesEveryComputer); // It returns false because not every computer checks the condition
+// console.log(doesEveryComputer); // It returns false because not every computer checks the condition.
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+let doesAtLeastOneComputer = computers.some((computer) => {
+    return computer.ram > 16
+})
+
+// console.log(doesAtLeastOneComputer); // It returns true because at least one computer or more checks the
+// condition.
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+const names = [
+    "Alexandria", 
+    "Matthew",
+    "Joe" 
+]
+
+// Find if there are names on this array with a length greater than 4 characters
+
+const newNames = names.every((name) => {
+    return name.length > 4
+})
+
+console.log(newNames); // We get false because not every name has a length greater than 4.
+
+
+const someNames = names.some((name) => {
+    return name.length > 4
+})
+
+console.log(someNames); // We get true because at least one name has a length greater than 4.
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
