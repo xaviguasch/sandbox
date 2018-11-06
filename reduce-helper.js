@@ -147,4 +147,41 @@ const deskTypes = desks.reduce((acc, desk) => {
       
 }, { sitting: 0, standing: 0 });
 
-console.log(deskTypes); // It returns { sitting: 3, standing: 2 }
+// console.log(deskTypes); // It returns { sitting: 3, standing: 2 }
+
+
+
+// 16. Hardmode: Custom 'Unique' Helper
+// Another really hard one! Write a function called 'unique' that will remove all the duplicate values from
+// an array.
+// For examples, given the following array:
+// const numbers = [1, 1, 2, 3, 4, 4]
+// Your function should return
+// [1, 2, 3, 4]
+// hint: Use the 'reduce' and 'find' helpers
+
+// function unique(array) {
+//    
+// }
+
+// SOLUTION
+
+function unique(inputArray){
+    return inputArray.reduce((previous, inputItem) => {
+        if(previous.find((prevItem) =>  prevItem === inputItem)) 
+        {
+            return previous;
+        }
+        previous.push(inputItem);
+        return previous;
+    }, []);
+}
+
+console.log(unique([1, 1, 2, 3, 4, 4]));
+
+// COMMENTS ON HOW IT'S DONE:
+// 1. Pass in an array as the accumulator object.  This array will get all the unique records.
+
+// 2. For each step through the reduce function, take the current element (the second argument to the anonymous function) and look through the accumulator array to see if the element already exists in there.  The 'find' helper is a good thing to use here.
+
+// 3.  If the element is already in the accumulator array, then we don't need to add it again, otherwise, do toss it in.
