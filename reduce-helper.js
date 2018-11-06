@@ -60,10 +60,10 @@ console.log(ColorsArray); // it returns [ 'red', 'yellow', 'blue' ]
 function balancedParens(string) {
     return !string.split("").reduce((previous, char) => {
         if (previous < 0) { return previous } // this is for the edge case of ")("
-        if (char === "(") { ++previous } 
-        if (char === ")") { --previous }
+        if (char === "(") { return ++previous } 
+        if (char === ")") { return --previous }  
         return previous
-    }, 0)   
+    }, 0)       
 
 }
 
@@ -75,7 +75,33 @@ function balancedParens(string) {
 // "))("  this would get us "-1".
 
 
-console.log(balancedParens("))))")); // The "previous" counter is 4, so it's not zero, so it's NOT balanced.
-// The the return on line 60 transforms the number in "previous" count to a boolean. If it's a positive or a 
+console.log(balancedParens("((((")); // The "previous" counter is 4, so it's not zero, so it's NOT balanced.
+// The the return on line 61 transforms the number in "previous" count to a boolean. If it's a positive or a 
 // negative number it gives us back "true". We want to reverse it with the "!" sign. 
 // So now we got a "false" if the number is NOT zero, so the parens are NOT balanced.
+
+
+
+
+
+
+
+/////////   CODING EXERCISES   ////////////
+
+// 14. Distance Traveled
+// Use the 'reduce' helper to find the sum of all the distances traveled. Assign the result to the varaible 
+// 'totalDistance'.
+
+// const trips = [{ distance: 34 }, { distance: 12 } , { distance: 1 }]
+
+// const totalDistance
+
+// SOLUTION
+
+const trips = [{ distance: 34 }, { distance: 12 } , { distance: 1 }]
+
+const totalDistance = trips.reduce((previous, trip) => {
+    return previous + trip.distance
+}, 0)
+
+console.log(totalDistance);
