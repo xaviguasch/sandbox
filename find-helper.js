@@ -115,6 +115,7 @@ const ladders = [
 
 function findWhere(array, criteria) {    
    const property = Object.keys(criteria) // it gives you ['height']
+   // console.log(Object.keys(criteria)[0]) // it gives you 'height'
    
    return array.find((item) => {
         // criteria[property] gives you '25', the value of the property
