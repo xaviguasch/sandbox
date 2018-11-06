@@ -55,24 +55,105 @@ const newNames = names.every((name) => {
     return name.length > 4
 })
 
-console.log(newNames); // We get false because not every name has a length greater than 4.
+// console.log(newNames); // We get false because not every name has a length greater than 4.
 
 
 const someNames = names.some((name) => {
     return name.length > 4
 })
 
-console.log(someNames); // We get true because at least one name has a length greater than 4.
+// console.log(someNames); // We get true because at least one name has a length greater than 4.
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
+// Validation example
+
+function Field(value) {
+    this.value = value
+}
+
+Field.prototype.validate = function() {
+    return this.value.length > 0
+}
+
+const username = new Field("2cool")
+const password = new Field("my_password")
+const birthdate = new Field("10/10/2010")
+
+
+// console.log(username.validate()); // it returns true because the username value is > 0
+// console.log(password.validate()); // it returns true because the password value is > 0
+
+// console.log(password.validate() && username.validate()); // checks both conditions
+
+// Refactoring with 'every' helper
+
+const fields = [username, password, birthdate]
+
+const formIsValid = fields.every((field) => {
+    return field.validate()
+})
+
+// console.log(formIsValid); // It returns true because all fields are valid, it checks the condition for 
+// all of them
+
+// if (formIsValid) {
+//     // allow user to submit!
+// } else {
+//     // show an error message
+// }
+
+
+
+
+/////////   CODING EXERCISES   ////////////
+
+// 12. Finding Submitted Users
+// Given an array of users, return 'true' if every user has submitted a request form. Assign the result to 
+// the variable 'hasSubmitted'
+
+const users = [
+    { id: 21, hasSubmitted: true },
+    { id: 62, hasSubmitted: false },
+    { id: 4, hasSubmitted: true }
+  ];
+  
+// const hasSubmitted;
+
+// SOLUTION
+
+const hasSubmitted = users.every((user) => {
+    return user.hasSubmitted
+})
+
+// console.log(hasSubmitted); // Returns false because not every user has submitted a request form.
 
 
 
 
 
+// 13. In Progress Network Requests
+// Given an array of network objects representing network requests, assign the boolean 'true' to the
+// variable 'inProgress' if any network request has a 'status' of 'pending'
+
+const requests = [
+    { url: '/photos', status: 'complete' },
+    { url: '/albums', status: 'pending' },
+    { url: '/users', status: 'failed' }
+  ];
+  
+// const inProgress;
+
+// SOLUTION
+
+// const inProgress = requests.some((request) => {
+//     return request.status === 'pending'
+// })
+
+// single line-solution
+const inProgress = requests.some(request => request.status === 'pending')
 
 
-
+console.log(inProgress); // It returns true because at least one of the requests has the status on 'pending'.
 
