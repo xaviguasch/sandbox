@@ -22,7 +22,7 @@ const result = numbers.reduce(function(sum, number) {
 // "30" plus "30".
 
 
-console.log(result); // It returns 60
+// console.log(result); // It returns 60
 
 
 /////
@@ -40,7 +40,7 @@ const ColorsArray = primaryColors.reduce((previous, primaryColor) => {
     return previous
 }, [])
 
-console.log(ColorsArray); // it returns [ 'red', 'yellow', 'blue' ]
+// console.log(ColorsArray); // it returns [ 'red', 'yellow', 'blue' ]
 
 
 //////////////////////
@@ -75,7 +75,7 @@ function balancedParens(string) {
 // "))("  this would get us "-1".
 
 
-console.log(balancedParens("((((")); // The "previous" counter is 4, so it's not zero, so it's NOT balanced.
+// console.log(balancedParens("((((")); // The "previous" counter is 4, so it's not zero, so it's NOT balanced.
 // The the return on line 61 transforms the number in "previous" count to a boolean. If it's a positive or a 
 // negative number it gives us back "true". We want to reverse it with the "!" sign. 
 // So now we got a "false" if the number is NOT zero, so the parens are NOT balanced.
@@ -104,4 +104,47 @@ const totalDistance = trips.reduce((previous, trip) => {
     return previous + trip.distance
 }, 0)
 
-console.log(totalDistance);
+// console.log(totalDistance);  // it returns the number 47
+
+
+// 15. Reducing Properties
+// Use the 'reduce' helper to create an object that tallies the number of sitting and standing desks.
+// The object returned should have the form '{ siting: 3, standing: 2 }'. The initial value has been
+// provided to you.
+// HINT: Don't forget to return the accumulator object (the first argument to the iterator function)
+
+// const desks = [
+//     { type: 'sitting' },
+//     { type: 'standing' },
+//     { type: 'sitting' },
+//     { type: 'sitting' },
+//     { type: 'standing' }
+//  ];
+  
+//   const deskTypes = desks.reduce(function() {
+      
+//   }, { sitting: 0, standing: 0 });
+
+// SOLUTION
+
+const desks = [
+    { type: 'sitting' },
+    { type: 'standing' },
+    { type: 'sitting' },
+    { type: 'sitting' },
+    { type: 'standing' }
+];
+  
+const deskTypes = desks.reduce((acc, desk) => {
+    if (desk.type === 'sitting') {
+        acc.sitting += 1
+    } else if (desk.type === 'standing') {
+        acc.standing += 1
+    }
+    
+    return acc
+    
+      
+}, { sitting: 0, standing: 0 });
+
+console.log(deskTypes); // It returns { sitting: 3, standing: 2 }
