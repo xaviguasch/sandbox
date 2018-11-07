@@ -78,12 +78,127 @@ console.log(newerSpread); // It prints: [ 'blue', 'red', 'green', [ 'fire', 'blu
 // Let's create a function that checks if we're getting milk in our shopping list, if we aren't getting
 // milk, the function adds it to the array.
 
-function validateShoppingList(...items) {
+function validateShoppingList(...items) { // Using 'rest' here
     if (items.indexOf('milk') < 0) { // checks if the 'milk' is there
-        return [ 'milk', ...items]
+        return [ 'milk', ...items] // Using 'spread' here
     }
     return items
 }
 
 console.log(validateShoppingList('oranges', 'bread', 'eggs')) // returns: [ 'milk', 'oranges', 'bread', 'eggs' ]
 
+// ALTERNATIVE using 'find' instead of IndexOf
+// function validateShoppingList(...items){
+//     if ( !items.find(item => item === 'milk')) { 
+//           return ['milk',...items]
+//         }
+//     return items
+// }
+
+
+// ALTERNATIVE using 'includes'
+// function validateShoppingList(...items) {
+//     if(!items.includes('milk') ) {
+//       return ['milk', ...items]
+//     }
+    
+//     return items;
+// }
+  
+
+
+
+//////////////////
+// Here we're passing the arguments of the function call to another function
+
+const MathLibrary = {
+    calculateProduct(...rest) {
+        console.log('Please use the multiply method instead, calculateProduct will be gone soon');
+        
+        return this.multiply(...rest)
+    },
+    multiply(a, b) {
+        return a * b
+    }
+}
+
+console.log(MathLibrary.calculateProduct(4, 5)); // Returns: 20 and the message 
+
+
+
+
+
+/////////   CODING EXERCISES   ////////////
+
+// 29. Many, Many, Arguments
+
+// Refactor the following function to use the rest operator. Remember, an argument using the rest
+// operator does NOT need to be called 'rest'
+
+// function product(a, b, c, d, e) {
+//     var numbers = [a,b,c,d,e];
+    
+//     return numbers.reduce(function(acc, number) {
+//       return acc * number;
+//     }, 1)
+// }
+
+// SOLUTION
+
+function product(...numbers) {
+    
+    return numbers.reduce(function(acc, number) {
+      return acc * number;
+    }, 1)
+}
+
+console.log(product(3, 4, 5)); // Returns: 60
+console.log(product(2, 3)); // Returns: 6   WE CAN PASS ANY NUMBER OF ARGUMENTS!!!
+
+
+
+
+// 30. Spreadin' Arrays
+// Refactor the following to use the spread operator
+
+// function join(array1, array2) {
+//     return array1.concat(array2);
+// }
+
+// SOLUTION
+
+const rappers = ['Vince', 'Travis', 'Kendrick']
+const singers = ['H.E.R.', 'Kehlani', 'Rico Nasty']
+
+function join(array1, array2) {
+    return [...array1, ...array2]
+}
+
+
+// console.log(join(rappers, singers)); // Returns: [ 'Vince', 'Travis', 'Kendrick', 'H.E.R.', 'Kehlani', 'Rico Nasty' ]
+
+
+// 31. Mixing Rest and Spread
+// Refactor the following to use only the rest operator
+
+// function unshift(array, a, b, c, d, e) {
+//     return [a, b, c, d, e].concat(array);
+// }
+// it returns: [ 76, 12, 10, 400, 23, 2, 3, 5 ]
+
+
+
+// SOLUTION
+
+// this solution uses 'rest' only
+function unshift(array, ...numbers) {
+    return numbers.concat(array)
+}
+
+// this one uses 'rest' and 'spread'
+// function unshift(array, ...numbers) {
+//     return [...array, ...numbers]
+// }
+
+
+// console.log(unshift([2, 3, 5], 76, 12, 10, 400, 23));
