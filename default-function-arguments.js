@@ -76,3 +76,70 @@ const userMike = new User(generateId())
 
 // or you can just pass an existing user, then the default won't apply:
 console.log(updatedCreateAdminUser(userMike)); // returns: User { id: 31072.700149799482, admin: true }
+
+
+
+
+
+
+/////////   CODING EXERCISES   ////////////
+
+// 27. Use Default Arguments
+// Refactor the following code to use default function arguments. Be sure to remove any usused code after
+// you refactor it.
+
+// function sum(a, b) {
+//     if (a === undefined) {
+//       a = 0; 
+//     }
+    
+//     if (b === undefined) {
+//       b = 0; 
+//     }
+    
+//     return a + b;
+// }
+
+// SOLUTION
+
+function sum(a = 0, b = 0) { 
+    return a + b;
+}
+
+// we also can us fat arrow functions:
+// const sum = (a = 0, b = 0) => a + b
+
+// console.log(sum()); // returns: 0
+// console.log(sum(3)); // returns: 3
+// console.log(sum(null, 4)); // returns: 4
+// console.log(sum(undefined, 5)); // returns: 5
+// console.log(sum(3, 4)); // returns: 7
+
+
+
+
+// 28. Dumping Unused Code
+// Refactor the following code to use default function arguments. Be sure to remove any unused code
+// after you refactor it
+
+// function addOffset(style) {
+//     if (!style) {
+//       style = {}; 
+//     }
+    
+//     style.offset = '10px';
+    
+//     return style;
+// }
+
+// SOLUTION
+
+const addOffset = (style = {} ) => {
+    style.offset = '10px'
+    return style
+}
+
+
+// console.log(addOffset()); // returns: { offset: '10px' }
+// console.log(addOffset({ })); // returns: { offset: '10px' }, you are not using the default value
+
