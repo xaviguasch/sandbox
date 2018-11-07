@@ -36,3 +36,43 @@ function makeAjaxRequest2(url, method = 'GET') {
 // console.log(makeAjaxRequest2('google', undefined)) // returns 'GET'
 
 
+////////////////////////////////
+
+function User(id) {
+    this.id = generateId()
+}
+
+function generateId() {
+    return Math.random() * 99999
+}
+
+// const userJohn = new User()
+
+// console.log(userJohn); // returns:    User { id: 89024.08130395022 }     // the id is a random number
+
+
+// we're adding the admin property to a user 
+function createAdminUser(user) {
+    user.admin = true
+    return user
+}
+
+// In here we're creating a new user with a random ID and then calling create admin user. It's all nested
+console.log(createAdminUser(new User(generateId()))) // returns:   User { id: 98633.79302207654, admin: true }
+
+
+// What if we want to do everything in one go: To have createAdminUser create a new user, generate a unique ID
+// and also give the user the admin property? We can do the following:
+
+function updatedCreateAdminUser(user = new User(generateId())) {
+    user.admin = true
+    return user
+}
+console.log(updatedCreateAdminUser()); // returns: User { id: 58061.36615019201, admin: true }
+// it returns the same as before, but we avoid all the nesting when calling the function.
+
+
+const userMike = new User(generateId())
+
+// or you can just pass an existing user, then the default won't apply:
+console.log(updatedCreateAdminUser(userMike)); // returns: User { id: 31072.700149799482, admin: true }
