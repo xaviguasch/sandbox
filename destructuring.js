@@ -272,4 +272,57 @@ function isEngineer({ title, department }) {
 // As one-liner
 // const isEngineer = ({ title, department }) => title === 'Engineer' && department === 'Engineering'
 
-console.log(isEngineer(profile));
+// console.log(isEngineer(profile));  // It returns: true
+
+
+
+
+
+
+
+// 33. Array Destructuring In Practice
+
+// The 'classes' variables holds an array of arrays, where each array represents a single class that 
+// a student is enrolled in. Convert this array of arrays into an array of objects, where each object
+// has the keys 'subject', 'time' and 'teacher' and assign the result to 'classesAsObject'. Use array
+// destructuring and the map helper.
+
+// An array for a class has the form [subject, time, teacher]
+
+// The resulting data structure should look something like the following:
+
+// const classesAsObject = [{ subject: 'Geography', time: '2PM', teacher: 'Mrs. Larsen' }]
+
+
+// const classes = [
+//     [ 'Chemistry', '9AM', 'Mr. Darnick' ],
+//     [ 'Physics', '10:15AM', 'Mrs. Lithun'],
+//     [ 'Math', '11:30AM', 'Mrs. Vitalis' ]
+// ];
+  
+// const classesAsObject;
+
+
+
+// SOLUTION
+
+const classes = [
+    [ 'Chemistry', '9AM', 'Mr. Darnick' ],
+    [ 'Physics', '10:15AM', 'Mrs. Lithun'],
+    [ 'Math', '11:30AM', 'Mrs. Vitalis' ]
+];
+  
+const classesAsObject = classes.map(([ subject, time, teacher ]) => ({ subject, time, teacher }))
+
+// console.log(classesAsObject);
+// It prints: 
+// [ { subject: 'Chemistry', time: '9AM', teacher: 'Mr. Darnick' },
+//   { subject: 'Physics', time: '10:15AM', teacher: 'Mrs. Lithun' },
+//   { subject: 'Math', time: '11:30AM', teacher: 'Mrs. Vitalis' } ]
+
+
+
+
+
+// 34. Recursion With Destructuring
+
