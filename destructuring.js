@@ -184,12 +184,92 @@ function signup({password, email, dateOfBirth, city, username}) {  // order does
     console.log(city);
     console.log(email);
     console.log(dateOfBirth);
-    
-    
-    
-    // create a new user
 }
 
 // now the order doesn't need to match!
 
-signup(user) // it prints: New York        1/1/1990            myemail@example.com
+// signup(user) // it prints:        New York        myemail@example.com         1/1/1990            
+
+
+
+
+
+//////////////
+
+// You're getting this from the API:
+const points = [
+    [4, 5],
+    [10, 1],
+    [0, 40]
+]
+
+// but need to transform the data to the below structure, a list of objects with x and z properties:
+
+// [
+//     { x: 4, y: 5},
+//     { x: 10, y: 1},
+//     { x: 0, y: 40}
+// ]
+
+
+// The below works
+// const dataTransformed = points.map((pair) => {
+//     const x = pair[0]
+//     const y = pair[1]
+//     const obj = {x, y}
+//     return obj
+// })
+
+// console.log(dataTransformed); // It prints: [ { x: 4, y: 5 }, { x: 10, y: 1 }, { x: 0, y: 40 } ]
+
+
+// But we can do it better
+
+const dataTransformed = points.map(([ x, y ]) => {  
+    return { x, y }  // { x: x, y: y }
+})
+
+// console.log(dataTransformed); // It prints: [ { x: 4, y: 5 }, { x: 10, y: 1 }, { x: 0, y: 40 } ]
+
+
+
+
+
+
+
+
+/////////   CODING EXERCISES   ////////////
+
+// 32. Destructuring in Practice
+// The snippet of code below duplicates references to 'profile' inside of the 'isEngineer' function.
+// Perhaps we can reduce the amount of code used for referencing the 'title' and 'department' properties.
+// Refactor this code to sue destructuring. Can you get the body of the 'isEngineer' function down to a
+// single line?
+
+// const profile = {
+//     title: 'Engineer',
+//     department: 'Engineering'
+// };
+  
+// function isEngineer(profile) {
+//    var title = profile.title;
+//    var department = profile.department;
+//    return title === 'Engineer' && department === 'Engineering';
+// }
+
+
+// SOLUTION
+
+const profile = {
+    title: 'Engineer',
+    department: 'Engineering'
+};
+  
+function isEngineer({ title, department }) {
+    return title === 'Engineer' && department === 'Engineering';
+}
+
+// As one-liner
+// const isEngineer = ({ title, department }) => title === 'Engineer' && department === 'Engineering'
+
+console.log(isEngineer(profile));
