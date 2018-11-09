@@ -13,3 +13,12 @@ for (let number of numbers) {
 }
 
 console.log(total); // It prints: 10
+
+
+
+let list = [4, 5, 6];
+ 
+for (let i in list) {
+   console.log(i); // "0", "1", "2",
+}
+ 
